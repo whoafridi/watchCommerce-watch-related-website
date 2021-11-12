@@ -1,0 +1,16 @@
+.footer{
+    background-color: #101056;
+    min-width: 100%;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icons i{
+    margin-left: 10px;
+    color: #ffffff;
+}
+.title{
+    color: #ffffff;
+}
