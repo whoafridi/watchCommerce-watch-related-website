@@ -20,9 +20,9 @@ const ProductDetail = ({s}) => {
                     Back to services 
                 </Button>
             </Link>
-            {/* <Link to={`/booking/${_id}`}>
+            <Link to={`/placeorder/${_id}`}>
                 <Button variant="primary" type="submit" className="mt-2 ms-2">Make a booking</Button>
-            </Link> */}
+            </Link>
             
     </>
     )
