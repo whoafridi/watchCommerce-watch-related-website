@@ -1,65 +1,29 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link , useHistory, useLocation} from 'react-router-dom';
-import useAuth from '../../hooks/useAuth'
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import useAuth from '../../hooks/useAuth';
 
 
 const Registration = () => {
-    const { signInUsingGoogle } = useAuth();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const auth = getAuth();
-    const location = useLocation();
+    const [loginData, setLoginData] = useState({});
     const history = useHistory();
-    const redirect_uri = location.state?.from || "/home"
-
-    const handleNameChange = e => {
-        setName(e.target.value);
-      }
-
-    const handleEmailChange = e => {
-        setEmail(e.target.value);
-      }
     
-      const handlePasswordChange = e => {
-        setPassword(e.target.value)
-      }
+    const location = useLocation();
+    const redirect_uri = location.state?.from || "/home"
+    const { user, registerUser, signInUsingGoogle } = useAuth();
 
-        // user registration
-    const handleRegistration = e =>{
-        console.log(email, password)
-        e.preventDefault();
-
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            // ...
-            setUserName();
-            //console.log(user);
-            history.push(redirect_uri)
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
-        });
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
     }
-    // set user name 
-    const setUserName = () => {
-        updateProfile(auth.currentUser, { displayName: name })
-          .then(result => { })
-      }
-      // google login
-      const handleGooglelogin = () =>{
-        signInUsingGoogle()
-        .then(result =>{
-            history.push(redirect_uri);
-        })
-     }
+    const handleLoginSubmit = e => {
+        registerUser(loginData.email, loginData.password, loginData.name, history);
+        e.preventDefault();
+    }
+   
 
     return (
         <div className="container">
@@ -67,23 +31,22 @@ const Registration = () => {
             <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Enter name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your name" onBlur={handleNameChange}/>
+                <Form.Control type="text" name="name" placeholder="Enter your name" onBlur={handleOnBlur}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" onBlur={handleEmailChange}/>
+                <Form.Control type="email" name="email" placeholder="Enter email" onBlur={handleOnBlur}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onBlur={handlePasswordChange}/>
+                <Form.Control type="password" name="password" placeholder="Password" onBlur={handleOnBlur}/>
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleRegistration}>
+            <Button variant="primary" type="submit" onClick={handleLoginSubmit }>
                 Registration
             </Button>
             </Form>
-            <button onClick={handleGooglelogin} className="btn btn-warning">Google Sign In</button>
             <h4>Already have an account? <Link to="/login">
             <Button variant="warning" type="submit">
                 Login

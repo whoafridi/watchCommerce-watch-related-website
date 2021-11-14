@@ -46,7 +46,7 @@ const Faq = () => {
             </Accordion>
             </div>
             <div className="col-md-6 col-sm-12">
-                <img style={{width:"100%"}} src="https://drcourier.ae/images/about-img1.png" alt="courier-service" />
+                <img style={{width:"100%"}} src="https://www.benbridge.com/on/demandware.static/-/Sites-bbj-master-catalog/default/dw8ad8b37f/images/11628963_07.jpg" alt="courier-service" />
            </div>
         </div>
         </>

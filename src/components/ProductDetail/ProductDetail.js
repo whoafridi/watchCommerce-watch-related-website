@@ -17,11 +17,11 @@ const ProductDetail = ({s}) => {
         </div>
             <Link to="/products">
                 <Button variant="warning" type="submit" className="mt-2">
-                    Back to services 
+                    Back to products
                 </Button>
             </Link>
             <Link to={`/placeorder/${_id}`}>
-                <Button variant="primary" type="submit" className="mt-2 ms-2">Make a booking</Button>
+                <Button variant="primary" type="submit" className="mt-2 ms-2">Place order</Button>
             </Link>
             
     </>

@@ -8,7 +8,7 @@ const Header = () => {
         <>
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" sticky="top">
             <Container>
-                <Navbar.Brand as={Link} to="/">ProCourier</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">watchCommerce</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="justify-content-end">
@@ -17,9 +17,7 @@ const Header = () => {
                     <Nav.Link as={Link} to="/aboutus">About us</Nav.Link>
                     {user?.email ?
                     <>
-                        <Nav.Link as={Link}  to="/addproduct">Add Product</Nav.Link>
                         <Nav.Link as={Link}  to="/dashboard">Dashboard</Nav.Link>
-                        <Nav.Link as={Link}  to="/managebooked">Manage Booked</Nav.Link>
                         <Navbar.Text className="mr-2">
                             Sign in as {user?.displayName} 
                         </Navbar.Text>

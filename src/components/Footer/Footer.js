@@ -6,9 +6,9 @@ const Footer = () => {
         <div className="container mt-5 footer">
         <div className="row">
             <div className="col-md-4 mt-5 col-sm-12">
-                <h3 className="title">ProCourier</h3>
+                <h3 className="title">watchCommerce</h3>
                 <p  className="title">12/2, Dhanmondi 3-A, Dhaka-1209</p>
-                <p  className="title">info@procourier.com</p>
+                <p  className="title">info@r.com</p>
                 <p  className="title">Hotline: 0980987665</p>
             </div>
             <div className="col-md-4 mt-5 col-sm-12">
@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-        <h5 className="text-center title">Copyright © 2021 ProCourier - All Rights Reserved.</h5>
+        <h5 className="text-center title">Copyright © 2021 watchCommerce - All Rights Reserved.</h5>
     </div>
     )
 }

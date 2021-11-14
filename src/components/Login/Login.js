@@ -4,31 +4,29 @@ import { Link , useHistory, useLocation} from 'react-router-dom';
 import useAuth from '../../hooks/useAuth'
 
 const Login = () => {
-     const { signInUsingGoogle} = useAuth();
-     
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
      const location = useLocation();
      const history = useHistory();
      const redirect_uri = location.state?.from || "/home";
+     
+     const [loginData, setLoginData] = useState({});
+     const { user, loginUser, signInUsingGoogle } = useAuth();
+ 
+     const handleOnChange = e => {
+         const field = e.target.name;
+         const value = e.target.value;
+         const newLoginData = { ...loginData };
+         newLoginData[field] = value;
+         setLoginData(newLoginData);
+     }
+     const handleLoginSubmit = e => {
+         loginUser(loginData.email, loginData.password, location, history);
+         e.preventDefault();
+     }
 
-     const handleEmailChange = e => {
-        setEmail(e.target.value);
-      }
-    
-      const handlePasswordChange = e => {
-        setPassword(e.target.value)
-      }
-
-      const handleLogin = e =>{
-          e.preventDefault()
-      }
      const handleGooglelogin = () =>{
-        signInUsingGoogle()
-        .then(result =>{
-            history.push(redirect_uri);
-        })
+        signInUsingGoogle(location, history)
+        
      }
 
     return (
@@ -37,15 +35,15 @@ const Login = () => {
             <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" onBlur={handleEmailChange}/>
+                <Form.Control type="email" name="email" placeholder="Enter email" onBlur={handleOnChange}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onBlur={handlePasswordChange}/>
+                <Form.Control type="password" name="password" placeholder="Password" onBlur={handleOnChange}/>
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleLogin}>
-                Registration
+            <Button variant="primary" type="submit" onClick={handleLoginSubmit}>
+                Login
             </Button>
             </Form>
             <button onClick={handleGooglelogin} className="btn btn-warning">Google Sign In</button>

@@ -9,7 +9,7 @@ const Product = () => {
     const [single, setSingle] = useState([]);
   
       useEffect(()=>{
-          fetch("http://localhost:5000/products/")
+          fetch("https://arcane-spire-40682.herokuapp.com/products")
           .then(res => res.json())
           .then(data => setService(data));
       },[id])

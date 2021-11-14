@@ -16,7 +16,7 @@ const PlaceOrder = () => {
     const [single, setSingle] = useState([]);
   
       useEffect(()=>{
-          fetch("http://localhost:5000/products")
+          fetch("https://arcane-spire-40682.herokuapp.com/products")
           .then(res => res.json())
           .then(data => setService(data));
       },[id])
@@ -32,7 +32,7 @@ const PlaceOrder = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('http://localhost:5000/order', data)
+        axios.post('https://arcane-spire-40682.herokuapp.com/order', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('added successfully');
@@ -61,7 +61,7 @@ const PlaceOrder = () => {
             <h2 className="text-center">Please order</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("email", { required: true })} placeholder="Email" value={user.email}/>
-                <input {...register("servicename", { required: true })} placeholder="Service Name" value={si.name}/>
+                <input {...register("productname", { required: true })} placeholder="Product Name" value={si.name}/>
                 <input type="number" {...register("price")} placeholder="price" value={si.price}/>
                 <input {...register("shipping_address")} placeholder="shipping address" />
                 <input type="submit" />
@@ -69,7 +69,7 @@ const PlaceOrder = () => {
         </div>
                 <Link to='/products'>
                 <Button variant="dark" type="submit" className="ms-2">
-                    Back to services
+                    Back to products
                 </Button>
                 </Link>
             </>

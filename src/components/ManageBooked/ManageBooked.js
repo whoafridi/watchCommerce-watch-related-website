@@ -2,23 +2,17 @@ import React, { useEffect, useState } from 'react'
 import useAuth from '../../hooks/useAuth';
 import {Button} from 'react-bootstrap';
 
-const MyBooked = () => {
+const ManageBooked = () => {
     const {user} = useAuth();
     const [book, setBook] = useState([]);
-    const [single, setSingle] = useState([]);
 
     useEffect(()=>{
-        fetch(`https://arcane-spire-40682.herokuapp.com/order/${user.email}`)
+        fetch(`https://arcane-spire-40682.herokuapp.com/order`)
         .then(res =>res.json())
         .then(data => setBook(data))
-    },[user]);
+    },[]);
 
-    useEffect(()=>{
-        const values = book.filter((s) => s.email == user.email)
-        setSingle(values);
-      },[book]);
-
-     // DELETE AN USER
+     // DELETE order
      const handleDeleteUser = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
@@ -39,7 +33,7 @@ const MyBooked = () => {
 
     return (
         <div className="container">
-            <h1 className="mt-4 h2 text-center fw-bold"> My orders</h1>
+            <h1 className="mt-4 h2 text-center fw-bold"> All orders</h1>
              <div className="d-flex justify-content-center">
                    <table class="table">
                     <thead>
@@ -51,7 +45,7 @@ const MyBooked = () => {
                         </tr>
                     </thead>
                 {
-                    single.map(s=>
+                    book.map(s=>
                     <tbody>
                         <tr>
                         <th scope="row">{s.email}</th>
@@ -70,4 +64,4 @@ const MyBooked = () => {
     )
 }
 
-export default MyBooked;
+export default ManageBooked;

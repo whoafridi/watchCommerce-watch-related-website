@@ -7,7 +7,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
 
-        axios.post('http://localhost:5000/products', data)
+        axios.post('https://arcane-spire-40682.herokuapp.com/products', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('added successfully');
