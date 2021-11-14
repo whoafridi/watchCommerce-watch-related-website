@@ -1,6 +1,6 @@
 ## Assignment - 12 - watchCommerce - a different watch related website
 
-## live site [link](https://pro-courier.web.app)
+## live site [link](https://e-commerce-fa971.web.app)
 
 ## Main Points
 
