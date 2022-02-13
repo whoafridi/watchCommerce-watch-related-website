@@ -5,7 +5,7 @@ const Faq = () => {
         <>
         <h2 className="fw-bold text-center mt-5">Frequently Asked Questions ?</h2>
         <div className="container row mb-5 mt-5">
-            <div className="col-md-6 col-sm-12">
+            <div className="col-md-7 col-sm-12">
             <Accordion defaultActiveKey="0" flush>
             <Accordion.Item eventKey="0">
                 <Accordion.Header>Why choose us?</Accordion.Header>
@@ -45,7 +45,7 @@ const Faq = () => {
             </Accordion.Item>
             </Accordion>
             </div>
-            <div className="col-md-6 col-sm-12">
+            <div className="col-md-5 col-sm-12">
                 <img style={{width:"100%"}} src="https://www.benbridge.com/on/demandware.static/-/Sites-bbj-master-catalog/default/dw8ad8b37f/images/11628963_07.jpg" alt="courier-service" />
            </div>
         </div>

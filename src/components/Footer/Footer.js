@@ -12,14 +12,14 @@ const Footer = () => {
                 <p  className="title">Hotline: 0980987665</p>
             </div>
             <div className="col-md-4 mt-5 col-sm-12">
-            <h2 className="text-center fw-bold title">Subscribe to our newsletter</h2>
+            <h2 className="text-center fw-bold title rounded-pill">Subscribe to our newsletter</h2>
         <InputGroup >
-            <FormControl className="rounded"
+            <FormControl className="rounded-pill"
                 placeholder="Your email address"
                 aria-label="Your email"
                 aria-describedby="basic-addon2"
             />
-            <Button variant="secondary" id="button-addon2" className="rounded ms-2">
+            <Button variant="secondary" id="button-addon2" className="rounded-pill ms-2">
                 Subscribe
             </Button>
         </InputGroup>
@@ -32,8 +32,8 @@ const Footer = () => {
                     <h1><i className='bx bxl-linkedin' ></i></h1>
                 </div>
             </div>
+        <h6 className="text-center title mt-3">Copyright © 2021 watchCommerce - All Rights Reserved.</h6>
         </div>
-        <h5 className="text-center title">Copyright © 2021 watchCommerce - All Rights Reserved.</h5>
     </div>
     )
 }
