@@ -20,7 +20,7 @@ const Home = () => {
     <div>
       <Banner />
       <div className="container mt-4">
-        <h1 className="text-center mb-3">Feature products</h1>
+        <h1 className="text-center mb-3">Featured products</h1>
         <Row xs={1} md={3} className="g-4">
           {products.slice(0, 6).map((service) => (
             <Details key={service._id} service={service}></Details>
@@ -29,7 +29,9 @@ const Home = () => {
         <div className="row">
           <div className="col-md-12 text-center mt-2">
             <Link to="/products">
-              <Button variant="btn btn-success rounded-pill"> Explore more products <i className="bx bx-right-arrow-alt"></i></Button>
+              <Button variant="btn btn-success rounded-pill">
+                Explore more products <i className="bx bx-right-arrow-alt"></i>
+              </Button>
             </Link>
           </div>
         </div>

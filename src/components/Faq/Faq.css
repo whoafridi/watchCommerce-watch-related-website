@@ -1,0 +1,7 @@
+.faq{
+    background-color: rgb(252, 250, 247);
+    background-image: linear-gradient(rgb(252, 250, 247) , rgb(252, 249, 247));
+}
+.faq-text{
+    color: rgba(94, 93, 93, 0.822);
+}

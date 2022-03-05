@@ -10,7 +10,7 @@ const Header = () => {
             <Container>
                 <Navbar.Brand as={Link} to="/">watchCommerce</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
+                <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-end'>
                 <Nav className="justify-content-end">
                     <Nav.Link as={Link} to="/home">Home</Nav.Link>
                     <Nav.Link as={Link} to="/products">Products</Nav.Link>
@@ -25,8 +25,8 @@ const Header = () => {
                     </>
                         :
                     <>
-                        <Nav.Link as={Link}  to="/registration">Register</Nav.Link>
-                        <Nav.Link as={Link} to="/login">Login </Nav.Link> 
+                        <Nav.Link as={Link} className="border border-2 rounded-3 rounded-pill" to="/registration">Register</Nav.Link>
+                        <Nav.Link as={Link} className="border border-2 rounded-3 rounded-pill ms-2" to="/login">Login </Nav.Link> 
                     </>
                     }
                 </Nav>

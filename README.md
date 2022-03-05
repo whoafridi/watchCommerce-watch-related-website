@@ -1,4 +1,4 @@
-## Assignment - 12 - watchCommerce - a different watch related website
+## watchCommerce - a different watch related website
 
 ## live site [link](https://e-commerce-fa971.web.app)
 

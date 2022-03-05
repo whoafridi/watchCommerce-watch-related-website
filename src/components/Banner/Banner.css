@@ -2,33 +2,25 @@
     background-color: #264653;    
     margin: 0 auto;
 }
-.header{
+.header-text{
+    color: #ad391cfb;
+}
+.header-btn{
     font-style: normal;
-    font-weight: 600;
-    font-size: 48px;
-    line-height: 72px;
+    color: #ad391cfb;
+    background-image: linear-gradient(rgb(245, 166, 20), #ad391cfb);
 }
-.details{
-    color: #E0E0E0;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 20px;
+.header-btn a{
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
 }
-.hero{
-    font-weight: 600;
-    font-size: 48px;
-    line-height: 72px;
-    color: #0A0826;
+.header-btn a:hover{
+    color: whitesmoke;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
 }
-.btn-bike{
-    background-color: #E76F51;
-    border: none;
-}
-.btn-bike:hover{
-    background-color: coral;
-    border: none;
-}
-.header-bike{
-    padding: 50px 100px;
+.header-p{
+    color: #264653;
 }
