@@ -15,7 +15,7 @@ const CustomerReview = () => {
     <div className="container">
       <h2 className="text-center fw-bold mt-5">Our Clients say</h2>
       <h4 className="text-center fw-bold mb-2">Testimonials</h4>
-      {review.length == 0 ? (
+      {review.length === 0 ? (
         <div className="row mt-5 mb-5">
           <div className="col text-center">
             <Button variant="primary" disabled>

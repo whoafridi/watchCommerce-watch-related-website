@@ -1,14 +1,16 @@
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import watch from '../../images/watch-repo.svg'
 
 const Header = () => {
     const {user, logOut} = useAuth();
     return (
         <>
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" sticky="top">
+        <Navbar collapseOnSelect expand="lg" bg="white" variant="light" sticky="top">
             <Container>
-                <Navbar.Brand as={Link} to="/">watchCommerce</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/"> 
+                <img src={watch} style={{width:"20px"}}/> watchCommerce</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-end'>
                 <Nav className="justify-content-end">
@@ -19,9 +21,9 @@ const Header = () => {
                     <>
                         <Nav.Link as={Link}  to="/dashboard">Dashboard</Nav.Link>
                         <Navbar.Text className="mr-2">
-                            Sign in as {user?.displayName} 
+                            {user?.displayName} 
                         </Navbar.Text>
-                        <Button onClick={logOut} variant="light">Logout</Button> 
+                        <Button onClick={logOut} variant="dark" className='rounded-pill ms-2'>Logout</Button> 
                     </>
                         :
                     <>

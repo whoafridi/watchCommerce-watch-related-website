@@ -5,7 +5,7 @@ const Details = ({ service }) => {
   const { _id, img, name, description, price } = service;
   return (
     <Col>
-      <Card className="border rounded-3 shadow p-3 mb-5 bg-body rounded h-80">
+      <Card className="border rounded-3 shadow p-3 mb-5 bg-body rounded h-100">
         <Link to={`/product/${_id}`}>
           <Card.Img variant="top" src={img} rounded />
         </Link>
@@ -19,7 +19,7 @@ const Details = ({ service }) => {
           </Link>
           <Card.Text className="fw-bold">Price: {price}</Card.Text>
           <Link to={`/product/${_id}`}>
-            <Button variant="warning" className="rounded-pill">
+            <Button variant="warning" className="rounded-pill header-btn text-white">
               More info
               <span>
                 <i className="bx bx-right-arrow-alt"></i>

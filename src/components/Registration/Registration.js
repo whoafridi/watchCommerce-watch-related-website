@@ -40,7 +40,6 @@ const Registration = () => {
         <div className="col-md-7 col-sm-12">
           <img
             src="https://thumbs.dreamstime.com/b/online-registration-sign-up-concept-young-man-signing-login-to-account-user-interface-secure-password-modern-vector-194944760.jpg"
-            // src="https://cdni.iconscout.com/illustration/premium/thumb/online-sign-up-4489361-3723268.png"
             alt="none"
             style={{ width: "100%" }}
           />

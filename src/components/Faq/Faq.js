@@ -59,8 +59,8 @@ const Faq = () => {
           </div>
         </div>
         <div
-          style={{ height: "450px;" }}
-          class="container faq mt-5 d-flex justify-content-center align-items-center rounded-3"
+          style={{ height: "250px" }}
+          className="container faq mt-5 d-flex justify-content-center align-items-center rounded-3"
         >
           <div>
             <h1 className="mt-5 faq-text">LET'S STAY IN TOUCH</h1>

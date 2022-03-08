@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./Interest.css";
 
@@ -14,7 +13,7 @@ const Interest = () => {
       </p>
       <div className="row">
         <div className="col text-center">
-          <Button className="text-color mt-4 rounded-pill" variant="warning">
+          <Button className="text-color mt-4 rounded-pill header-btn text-white" variant="warning">
             Contact us <i className="bx bx-right-arrow-alt"></i>
           </Button>
         </div>

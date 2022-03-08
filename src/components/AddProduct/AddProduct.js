@@ -17,15 +17,14 @@ const AddProduct = () => {
     }
 
     return (
-        <div className="add-service">
-            <h2 className="text-center">Please Add a Product</h2>
-            <h3 className="text-center">Only admin can add services</h3>
+        <div className="add-service mt-3 container">
+            <h2 className="text-center mt-3">Please Add a Product</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name", { required: true, maxLength: 20 })} placeholder="Product Name" />
-                <textarea {...register("description")} placeholder="Description" />
-                <input type="number" {...register("price")} placeholder="price" />
-                <input {...register("img")} placeholder="image url" />
-                <input type="submit" />
+                <input className='rounded' {...register("name", { required: true, maxLength: 20 })} placeholder="Product Name" />
+                <textarea className='rounded' {...register("description")} placeholder="Description" />
+                <input className='rounded' type="number" {...register("price")} placeholder="price" />
+                <input className='rounded' {...register("img")} placeholder="image url" />
+                <input className='rounded' type="submit" />
             </form>
         </div>
     );

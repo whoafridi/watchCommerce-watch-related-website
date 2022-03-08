@@ -4,8 +4,10 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 2px;
+    padding: 2px;
 }
 .add-service form input, textarea{
     width: 40%;
     margin-bottom: 10px;
+    padding: 2px;
 }

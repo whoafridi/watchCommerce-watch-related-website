@@ -1,10 +1,9 @@
 import "./Banner.css";
-import { Button } from "react-bootstrap";
 
 const Banner = () => {
   return (
     <div className="container mt-3" id="home">
-      <div className="row text-start align-items-center">
+      <div className="row d-flex align-items-center justify-content-center">
         <div className="col-lg-6 col-md-6 col-sm-12">
           <h1
             className="header-text h1 mt-10 fw-bold"
@@ -28,15 +27,12 @@ const Banner = () => {
             Image you don't need have because we provide you good products. We
             give you the best products to you
           </p>
-          <Button
+          <button
             type="button"
-            variant="success"
-            className="header-btn rounded-pill"
+            className="btn header-btn rounded-pill text-white"
           >
-            <a className="header-btn" target="_blank">
-              Buy now
-            </a>
-          </Button>
+            Explore more
+          </button>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
           <img

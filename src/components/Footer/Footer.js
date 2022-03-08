@@ -1,17 +1,17 @@
-import { Button, InputGroup, FormControl } from "react-bootstrap";
 import "./Footer.css";
+import payment from "../../images/payment.jpg";
 
 const Footer = () => {
   return (
-    <div className="container mt-5 footer">
+    <div className="container footer">
       <div className="row">
-        <div className="col-md-4 mt-5 col-sm-12">
+        <div className="col-md-3 mt-5 col-sm-12">
           <h3 className="title">watchCommerce</h3>
           <p className="title">12/2, Dhanmondi 3-A, Dhaka-1209</p>
           <p className="title">info@r.com</p>
           <p className="title">Hotline: 0980987665</p>
         </div>
-        <div className="col-md-4 mt-5 col-sm-12">
+        <div className="col-md-3 mt-5 col-sm-12">
           <h2 className="title">About company</h2>
           <div className="row">
             <div className="col-md-6 col-sm-6">
@@ -26,11 +26,15 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-4 mt-5 col-sm-12">
+        <div className="col-md-3 mt-5 col-sm-12">
           <h2 className="title">Our services</h2>
           <p className="title">Login / Regsitration</p>
           <p className="title">Order a watch</p>
           <p className="title">Buy a watch</p>
+        </div>
+        <div className="col-md-3 mt-5 col-sm-12">
+          <h2 className="title">Payment</h2>
+          <img src={payment} className="img-fluid h-50 w-100" />
         </div>
         <div>
           <h2 className="text-center title">Follow social network</h2>

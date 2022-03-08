@@ -10,16 +10,10 @@
     color: #ad391cfb;
     background-image: linear-gradient(rgb(245, 166, 20), #ad391cfb);
 }
-.header-btn a{
-    color: white;
-    text-decoration: none;
-    text-transform: capitalize;
-}
-.header-btn a:hover{
+.header-btn:hover{
     color: whitesmoke;
     text-decoration: none;
     cursor: pointer;
-    text-transform: uppercase;
 }
 .header-p{
     color: #264653;

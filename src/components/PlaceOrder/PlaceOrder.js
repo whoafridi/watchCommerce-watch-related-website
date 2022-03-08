@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './PlaceOrder.css'
 import axios from 'axios';
 import { useForm } from "react-hook-form";
-import { Form, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -23,7 +23,7 @@ const PlaceOrder = () => {
    
   
       useEffect(()=>{
-        const values = service.filter((s) => s._id == id)
+        const values = service.filter((s) => s._id === id)
         setSingle(values);
       },[service]);
 

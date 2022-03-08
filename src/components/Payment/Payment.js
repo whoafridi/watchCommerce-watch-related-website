@@ -1,7 +1,7 @@
 const Payment = () => {
     return (
-        <div className="container fw-bold mt-5">
-            Payment coming soon
+        <div className="container text-center fw-bold mt-5 align-middle">
+            <h6 className="align-middle">Payment coming soon</h6>
         </div>
     )
 }

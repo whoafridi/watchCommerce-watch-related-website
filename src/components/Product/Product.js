@@ -15,7 +15,7 @@ const Product = () => {
   }, [id]);
 
   useEffect(() => {
-    const values = service.filter((s) => s._id == id);
+    const values = service.filter((s) => s._id === id);
     setSingle(values);
   }, [service]);
 
