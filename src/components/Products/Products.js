@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Row, Button, Spinner } from "react-bootstrap";
+import Banner from "../Banner/Banner_product";
 import Detail from "../Detail/Detail";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://arcane-spire-40682.herokuapp.com/products")
+    fetch("https://watchcom-server.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
 
   return (
-    <div className="container">
+    <div className="container mb-5">
+      <Banner/>
       <h2 className="mt-3 fw-bold text-center mb-3">Our All Products</h2>
       {products.length === 0 ? (
         <div className="row mt-5 mb-5">

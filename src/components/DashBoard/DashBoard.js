@@ -20,10 +20,22 @@ const DashBoard = () => {
     <div className="container-fluid">
       <div className="row mt-2">
         <div className="col-md-2 col-sm-12 border-end border-4  rounded bginfo">
-          <div className="mt-2 d-flex justify-content-center">
-            <img src={user?.photoURL} className="w-25 rounded-circle text-center" alt="Not found"/>
-          </div>
-          <h6 className="text-white fw-bold text-center mt-2">{user?.displayName}</h6>
+          {user?.photoURL ? (
+            <div className="mt-2 d-flex justify-content-center">
+              {" "}
+              <img
+                src={user?.photoURL}
+                className="w-25 rounded-circle text-center"
+                alt="Not found"
+              />{" "}
+            </div>
+          ) : (
+            <h6 className="text-white text-center mt-2">Image not found</h6>
+          )}
+
+          <h6 className="text-white fw-bold text-center mt-2">
+            {user?.displayName}
+          </h6>
 
           <div className="d-flex flex-col">
             <div className="input-group mt-2">
@@ -56,13 +68,13 @@ const DashBoard = () => {
               <i className="fas fa-chart-line me-2"></i>
               Review
             </Link>
-            <Link
+            {/* <Link
               to={`${url}/payment`}
               className="me-2 text-decoration-none text-white list-group-item list-group-item-action bg-transparent"
             >
               <i className="fas fa-chart-line me-2"></i>
               Payment
-            </Link>
+            </Link> */}
             {admin && (
               <>
                 <Link
@@ -99,7 +111,10 @@ const DashBoard = () => {
         </div>
         <div className="col-md-10 col-sm-12">
           <div className="d-flex mt-4 justify-content-between">
-            <h3 className="ms-4 text-muted">  <i className="fa-solid fa-house"></i> Dashboard</h3>
+            <h3 className="ms-4 text-muted">
+              {" "}
+              <i className="fa-solid fa-house"></i> Dashboard
+            </h3>
             <div className="input-group  w-25">
               <input
                 type="text"
@@ -119,7 +134,7 @@ const DashBoard = () => {
             <Route path={`${path}/review`}>
               <Review />
             </Route>
-            <Route path={`${path}/payment`}>
+            <Route path={`${path}/payment/:paymentId`}>
               <Payment />
             </Route>
             <AdminRoute path={`${path}/manageproducts`}>

@@ -4,33 +4,28 @@ import "./DashBoardHome.css";
 import watch from "../../images/shopping-bag.png";
 import watch1 from "../../images/order.png";
 import watch2 from "../../images/inventory.png";
-import watch3 from '../../images/watch2.svg';
+import watch3 from "../../images/watch2.svg";
 
 const DashBoardHome = () => {
   const { user, admin } = useAuth();
   const [products, setProducts] = useState([]);
   const [books, setBooks] = useState([]);
   const [book, setBook] = useState([]);
-  const [single, setSingle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://arcane-spire-40682.herokuapp.com/order/${user.email}`)
+    fetch(`https://watchcom-server.herokuapp.com/orders?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setBook(data));
-  }, [user]);
+  }, []);
+
 
   useEffect(() => {
-    const values = book.filter((s) => s.email === user.email);
-    setSingle(values);
-  }, [book]);
-
-  useEffect(() => {
-    fetch("https://arcane-spire-40682.herokuapp.com/products")
+    fetch("https://watchcom-server.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
   useEffect(() => {
-    fetch(`https://arcane-spire-40682.herokuapp.com/order`)
+    fetch(`https://watchcom-server.herokuapp.com/order`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
@@ -94,43 +89,60 @@ const DashBoardHome = () => {
         )}
       </div>
       <div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Dummy 0</h5>
-        <img class="img-fluid" src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_posting_photo.svg" alt="..."/>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Dummy 0</h5>
+              <img
+                class="img-fluid"
+                src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_posting_photo.svg"
+                alt="..."
+              />
+              <p class="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Dummy 1</h5>
+              <img
+                class="img-fluid"
+                src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_posting_photo.svg"
+                alt="..."
+              />
+              <p class="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3 mt-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src={watch3} class="img-fluid rounded-start" alt="..." />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Dummy 1</h5>
-        <img class="img-fluid"  src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_posting_photo.svg" alt="..."/>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        
-      </div>
-    </div>
-  </div>
-  
-</div>
-<div class="card mb-3 mt-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src={watch3} class="img-fluid rounded-start" alt="..."/>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
   );
 };
 

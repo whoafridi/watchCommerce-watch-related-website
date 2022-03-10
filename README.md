@@ -18,4 +18,4 @@
 * express for api
 * mongodb for database
 
-## API [link](https://arcane-spire-40682.herokuapp.com/)
+## API [link](https://watchcom-server.herokuapp.com/)

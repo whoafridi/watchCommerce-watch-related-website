@@ -7,7 +7,7 @@ const Review = () => {
   const { user } = useAuth();
   const onSubmit = (data) => {
     axios
-      .post("https://arcane-spire-40682.herokuapp.com/review", data)
+      .post("https://watchcom-server.herokuapp.com/review", data)
       .then((res) => {
         if (res.data.insertedId) {
           alert("added successfully");

@@ -11,7 +11,7 @@ const Details = ({ service }) => {
         </Link>
         <Card.Body>
           <Link
-            to={`/service/${_id}`}
+            to={`/product/${_id}`}
             className="text-decoration-none text-dark"
           >
             <Card.Title className="fw-bold">{name}</Card.Title>

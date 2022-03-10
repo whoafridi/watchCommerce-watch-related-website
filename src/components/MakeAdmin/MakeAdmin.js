@@ -9,7 +9,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://arcane-spire-40682.herokuapp.com/users/admin", {
+    fetch("https://watchcom-server.herokuapp.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
