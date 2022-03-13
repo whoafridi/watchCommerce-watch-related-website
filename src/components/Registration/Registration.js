@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import swal from 'sweetalert';
 
 const Registration = () => {
   const [validated, setValidated] = useState(false);
@@ -19,6 +20,7 @@ const Registration = () => {
     newLoginData[field] = value;
     setLoginData(newLoginData);
   };
+  
   const handleLoginSubmit = (e) => {
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -39,7 +41,7 @@ const Registration = () => {
       <div className="row  d-flex align-items-center justify-content-center">
         <div className="col-md-7 col-sm-12">
           <img
-            src="https://thumbs.dreamstime.com/b/online-registration-sign-up-concept-young-man-signing-login-to-account-user-interface-secure-password-modern-vector-194944760.jpg"
+            src="https://cdni.iconscout.com/illustration/premium/thumb/online-registration-4489363-3723270.png"
             alt="none"
             style={{ width: "100%" }}
           />

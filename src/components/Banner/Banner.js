@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Banner.css";
 
 const Banner = () => {
@@ -27,12 +28,14 @@ const Banner = () => {
             Image you don't need have because we provide you good products. We
             give you the best products to you
           </p>
-          <button
-            type="button"
-            className="btn header-btn rounded-pill text-white"
-          >
-            Explore more
-          </button>
+          <Link to="/products">
+            <button
+              type="button"
+              className="btn header-btn rounded-pill text-white"
+            >
+              Explore more
+            </button>
+          </Link>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
           <img

@@ -5,30 +5,21 @@ import watch from "../../images/shopping-bag.png";
 import watch1 from "../../images/order.png";
 import watch2 from "../../images/inventory.png";
 import watch3 from "../../images/watch2.svg";
+import useProducts from "../../hooks/useProducts";
+import useOrders from "../../hooks/useOrder";
 
 const DashBoardHome = () => {
   const { user, admin } = useAuth();
-  const [products, setProducts] = useState([]);
+  const [products] = useProducts();
+  const [order, setOrder] = useOrders();
   const [books, setBooks] = useState([]);
-  const [book, setBook] = useState([]);
 
   useEffect(() => {
     fetch(`https://watchcom-server.herokuapp.com/orders?email=${user.email}`)
       .then((res) => res.json())
-      .then((data) => setBook(data));
-  }, []);
-
-
-  useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
-  useEffect(() => {
-    fetch(`https://watchcom-server.herokuapp.com/order`)
-      .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
+
   return (
     <div className="container mb-4">
       <div className="row ">
@@ -42,7 +33,7 @@ const DashBoardHome = () => {
                 <div className="d-flex justify-content-evenly">
                   <img src={watch} className="img-fluid w-25" />
                   <p class="card-text text-center fw-bold pt-3 mt-3">
-                    {book.length}
+                    {books.length}
                   </p>
                 </div>
               </div>
@@ -61,7 +52,7 @@ const DashBoardHome = () => {
                     <div className="d-flex justify-content-evenly">
                       <img src={watch2} className="img-fluid w-25" />
                       <p class="card-text text-center fw-bold pt-3 mt-3">
-                        {books.length}
+                        {order.length}
                       </p>
                     </div>
                   </div>
@@ -88,7 +79,7 @@ const DashBoardHome = () => {
           </>
         )}
       </div>
-      <div class="row">
+      {/* <div class="row">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -121,27 +112,7 @@ const DashBoardHome = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div class="card mb-3 mt-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src={watch3} class="img-fluid rounded-start" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div> */}
     </div>
   );
 };

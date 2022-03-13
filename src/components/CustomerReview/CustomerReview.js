@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import { Row, Button, Spinner } from "react-bootstrap";
+import { useReview } from "../../hooks/useReview";
 import CReview from "../CReview/CReview";
 
 const CustomerReview = () => {
-  const [review, setReviews] = useState([]);
-
-  useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/review")
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
-  }, []);
+  const [review] = useReview([]);
 
   return (
     <div className="container">

@@ -6,10 +6,12 @@ import { Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import swal from "sweetalert";
+import { useHistory } from "react-router-dom";
 
 const PlaceOrder = () => {
   const { user } = useAuth();
-  console.log(user.displayname);
+  const history = useHistory();
   const { id } = useParams();
 
   const [service, setService] = useState([]);
@@ -26,19 +28,37 @@ const PlaceOrder = () => {
     setSingle(values);
   }, [service]);
 
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-
-    axios
-      .post("https://watchcom-server.herokuapp.com/order", data)
-      .then((res) => {
-        if (res.data.insertedId) {
-          alert("added successfully");
-          reset();
-        }
-      });
+    swal({
+      title: "Do you want to order a product?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) { 
+        axios
+          .post("https://watchcom-server.herokuapp.com/order", data)
+          .then((res) => {
+            if (res.data.insertedId) {
+              console.log(data);
+              swal("You have placed an order", "Well Done!", {
+                icon: "success",
+                timer: 1300,
+              });
+              reset();
+              history.push("/products");
+            }
+          });
+      }
+    });
   };
   return (
     <div className="container">
@@ -59,34 +79,51 @@ const PlaceOrder = () => {
               <div className="book-service">
                 <h2 className="text-center">Please order</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                  <label className="mb-1">Email</label>
                   <input
+                    className="rounded"
                     {...register("email", { required: true })}
                     placeholder="Email"
                     value={user.email}
                   />
+                  <label className="mb-1">Product Name</label>
                   <input
+                    className="rounded"
                     {...register("productname", { required: true })}
                     placeholder="Product Name"
                     value={si.name}
                   />
+                  <label className="mb-1">Price</label>
                   <input
+                    className="rounded"
                     type="number"
                     {...register("price")}
                     placeholder="price"
                     value={si.price}
                   />
+                  <label className="mb-1">Shipping address</label>
                   <input
-                    {...register("shipping_address")}
+                    className="rounded"
+                    {...register("shipping_address", { required: true })}
                     placeholder="shipping address"
                   />
-                  <input type="submit" />
+                  {errors.shipping_address && (
+                    <p className="text-danger">Please add a shipping address</p>
+                  )}
+                  <input className="rounded-pill" type="submit" />
                 </form>
               </div>
-              <Link to="/products">
-                <Button variant="dark" type="submit" className="ms-2">
-                  Back to products
-                </Button>
-              </Link>
+              <div className="d-flex justify-content-center">
+                <Link to="/products">
+                  <Button
+                    variant="dark"
+                    type="submit"
+                    className="rounded-pill text-center"
+                  >
+                    Back to products
+                  </Button>
+                </Link>
+              </div>
             </>
           ))}
         </div>

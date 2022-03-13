@@ -1,31 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button, Spinner } from "react-bootstrap";
+import swal from "sweetalert";
+import useProducts from "../../hooks/useProducts";
 
 const ManageProducts = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const [products, setProducts] = useProducts([]);
 
   // DELETE product
   const handleDeleteUser = (id) => {
-    const proceed = window.confirm("Are you sure, you want to delete?");
-    if (proceed) {
-      const url = `https://watchcom-server.herokuapp.com/products/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            alert("deleted successfully");
-            const remainingProducts = products.filter((b) => b._id !== id);
-            setProducts(remainingProducts);
-          }
-        });
-    }
+    swal({
+      title: "Do you want to delete a product?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        const url = `https://watchcom-server.herokuapp.com/products/${id}`;
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              swal("You have deleted a product", "Well Done!", {
+                icon: "success",
+                timer: 1300,
+              });
+              const remainingProducts = products.filter((b) => b._id !== id);
+              setProducts(remainingProducts);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -36,6 +42,7 @@ const ManageProducts = () => {
           <tr>
             <th scope="col">Product Name</th>
             <th scope="col">Price</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         {products.length === 0 ? (
@@ -55,8 +62,8 @@ const ManageProducts = () => {
                 <th scope="row">{s.name}</th>
                 <td>{s.price}</td>
                 <td>
-                  <Button
-                    variant="dark"
+                  <Button className="rounded-pill"
+                    variant="danger"
                     onClick={() => handleDeleteUser(s._id)}
                   >
                     Delete

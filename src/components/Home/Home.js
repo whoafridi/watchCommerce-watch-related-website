@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useProducts from "../../hooks/useProducts";
 import Banner from "../Banner/Banner";
 import CustomerReview from "../CustomerReview/CustomerReview";
 import Details from "../Details/Details";
@@ -8,13 +9,7 @@ import Faq from "../Faq/Faq";
 import Interest from "../Interest/Interest";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const [products] = useProducts([]);
 
   return (
     <div>

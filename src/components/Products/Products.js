@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
 import { Row, Button, Spinner } from "react-bootstrap";
+import useProducts from "../../hooks/useProducts";
 import Banner from "../Banner/Banner_product";
 import Detail from "../Detail/Detail";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const [products] = useProducts();
 
   return (
     <div className="container mb-5">

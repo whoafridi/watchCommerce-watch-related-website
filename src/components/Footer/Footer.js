@@ -7,6 +7,7 @@ const Footer = () => {
       <div className="row">
         <div className="col-md-3 mt-5 col-sm-12">
           <h3 className="title">watchCommerce</h3>
+          <p className="title ">A watch commerce which aims to provide you best services for aroud the globe. You all can find and serve better products with us.</p>
           <p className="title">12/2, Dhanmondi 3-A, Dhaka-1209</p>
           <p className="title">info@r.com</p>
           <p className="title">Hotline: 0980987665</p>

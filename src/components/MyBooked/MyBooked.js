@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const MyBooked = () => {
   const { user } = useAuth();
@@ -14,22 +15,32 @@ const MyBooked = () => {
   }, []);
 
   // DELETE AN USER
-  const handleDeleteUser = (id) => {
-    const proceed = window.confirm("Are you sure, you want to delete?");
-    if (proceed) {
-      const url = `https://watchcom-server.herokuapp.com/order/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            alert("deleted successfully");
-            const remainingBooks = book.filter((b) => b._id !== id);
-            setBook(remainingBooks);
-          }
-        });
-    }
+  const handleDeleteOrder = (id) => {
+    console.log(id);
+    swal({
+      title: "Do you want to delete a product?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        const url = `https://watchcom-server.herokuapp.com/order/${id}`;
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              swal("You have deleted an order", "Well Done!", {
+                icon: "success",
+                timer: 1300,
+              });
+              const remainingBooks = book.filter((b) => b._id !== id);
+              setBook(remainingBooks);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -61,13 +72,19 @@ const MyBooked = () => {
                 <td>{s.shipping_address}</td>
                 <td>{s.price}</td>
                 <td>
-                  <Button
-                    variant="danger"
-                    className="rounded-pill"
-                    onClick={() => handleDeleteUser(s._id)}
-                  >
-                    Delete
-                  </Button>
+                  {s.payment ? (
+                    <p className="badge rounded-pill bg-dark">
+                      Purchased!
+                    </p>
+                  ) : (
+                    <Button
+                      variant="danger"
+                      className="rounded-pill"
+                      onClick={() => handleDeleteOrder(s._id)}
+                    >
+                      Delete
+                    </Button>
+                  )}
                 </td>
                 <td>
                   {s.payment ? (

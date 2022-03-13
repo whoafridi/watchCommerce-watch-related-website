@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import swal from "sweetalert";
 
 const Login = () => {
   const location = useLocation();
@@ -21,6 +22,8 @@ const Login = () => {
   };
 
   const handleLoginSubmit = (e) => {
+    e.preventDefault();
+
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
@@ -30,7 +33,6 @@ const Login = () => {
     setValidated(true);
 
     loginUser(loginData.email, loginData.password, location, history);
-    e.preventDefault();
   };
 
   const handleGooglelogin = () => {

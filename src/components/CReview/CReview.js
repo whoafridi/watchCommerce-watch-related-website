@@ -9,11 +9,12 @@ const CReview = ({ r }) => {
         className="shadow p-3 mb-5 bg-body rounded"
         key={r._id}
       >
-        <Card.Header>{r.displayName}</Card.Header>
         <Card.Body>
+        <h1 className="h1 w-100 text-center"><i class='bx bxs-user-circle'></i></h1>
           <Card.Text>
-            {r.review}
-            <p>
+          <h3 className="text-center">{r.displayName}</h3>
+            <p className="text-center">{r.review}</p>
+            <p className="text-center">
               <i class="bx bxs-star"></i>
               <i class="bx bxs-star"></i>
               <i class="bx bxs-star"></i>
