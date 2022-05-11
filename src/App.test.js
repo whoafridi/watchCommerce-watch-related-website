@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
+import { Router } from 'react-router-dom';
 import App from './App';
 import Header from './components/Header/Header';
+import {createMemoryHistory} from 'history'
 
 describe("Test the App Component", () => {
   test('renders in react fetures text', () => {
@@ -15,4 +17,10 @@ describe("Test the App Component", () => {
   });
 });
 
-
+test('full app rendering/navigating', () => {
+  const history = createMemoryHistory()
+  render(
+    <Router history={history} >
+      <App />
+    </Router>,)
+  });
