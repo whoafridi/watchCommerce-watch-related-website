@@ -37,7 +37,7 @@ const ManageProducts = () => {
   return (
     <div className="container-fluid table-responsive">
       {/* <h1 className="text-center">All products details</h1> */}
-      <table class="table w-100">
+      <table className="table w-100">
         <thead>
           <tr>
             <th scope="col">Product Name</th>

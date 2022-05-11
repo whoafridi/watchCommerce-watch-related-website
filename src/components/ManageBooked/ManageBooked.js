@@ -6,7 +6,7 @@ import useOrders from "../../hooks/useOrder";
 
 const ManageBooked = () => {
   const { user } = useAuth();
-  const [book, setBook] = useOrders([]);
+  const [book, setBook] = useOrders();
 
   // DELETE order
   const handleDeleteUser = (id) => {
@@ -23,7 +23,7 @@ const ManageBooked = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.deletedCount > 0) {
+            if (data.deletedCount < 0) {
               swal("You have deleted an order", "Well Done!", {
                 icon: "success",
                 timer: 1300,
@@ -38,7 +38,7 @@ const ManageBooked = () => {
 
   return (
     <div className="container-fluid table-responsive">
-      <table class="table w-100">
+      <table className="table w-100">
         <thead>
           <tr>
             <th scope="col">Email</th>

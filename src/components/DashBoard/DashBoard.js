@@ -123,7 +123,7 @@ const DashBoard = () => {
               />
             </div>
           </div>
-          <hr class="solid"></hr>
+          <hr className="solid"></hr>
           <Switch>
             <Route exact path={path}>
               <DashBoardHome />

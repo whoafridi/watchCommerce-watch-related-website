@@ -1,14 +1,64 @@
-import { Button, Modal, Form, FloatingLabel, Tab, Tabs, Card, Placeholder } from "react-bootstrap";
+import { Button, Modal, Tab, Tabs, Card, Placeholder } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import CReview from "../CReview/CReview";
+import ReactStars from "react-rating-stars-component";
+import { useForm } from "react-hook-form";
+import "./ProductDetail.css";
+import swal from "sweetalert";
 
 const ProductDetail = ({ s }) => {
   const { user } = useAuth();
   const [show, setShow] = useState(false);
   const [key, setKey] = useState("home");
+  const [star, setStar] = useState(0);
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const ratingChanged = (newRating) => {
+    setStar(newRating);
+    console.log(newRating);
+  };
+  const onSubmit = (data) => {
+    data.rating = star;
+    setStar(0);
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date + " " + time;
+    data.time = dateTime;
+    console.log(data);
+
+    // fetch("https://watchcom-server.herokuapp.com/review", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data.insertedId) {
+    //       swal("Reviewed successfully!", "success", {
+    //         icon: "success",
+    //         button: false,
+    //         timer: 1300,
+    //       });
+    //     }
+    //   });
+    reset();
+  };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -41,55 +91,58 @@ const ProductDetail = ({ s }) => {
                 <Modal.Title>Add a review</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form>
-                  <FloatingLabel
-                    controlId="floatingUserName"
-                    label="User name"
-                    className="mb-3"
-                  >
-                    <Form.Control
-                      type="text"
-                      placeholder="Name"
-                      value={user?.displayName}
+                <div className="review">
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <label className="mb-2">Email</label>
+                    <input
+                      className="rounded"
+                      {...register("email", { required: true })}
+                      placeholder="Email"
+                      value={user.email}
                     />
-                  </FloatingLabel>
-                  <FloatingLabel
-                    controlId="floatingInput"
-                    label="Email address"
-                    className="mb-3"
-                  >
-                    <Form.Control
-                      type="email"
-                      placeholder="name@example.com"
-                      value={user?.email}
+                    <label className="mb-2">User Name</label>
+                    <input
+                      className="rounded"
+                      {...register("name")}
+                      placeholder="User name"
+                      value={user.displayName}
                     />
-                  </FloatingLabel>
-                  <FloatingLabel
-                    controlId="floatingProductName"
-                    label="Product name"
-                    className="mb-3"
-                  >
-                    <Form.Control
-                      type="text"
+                    <label className="mb-2">Product Name</label>
+                    <input
+                      className="rounded"
+                      {...register("productname", { required: true })}
                       placeholder="Product Name"
-                      value={name}
+                      value={s.name}
                     />
-                  </FloatingLabel>
-                  <FloatingLabel
-                    controlId="floatingReview"
-                    label="Review"
-                    className="mb-3"
-                  >
-                    <Form.Control type="text" placeholder="Review" />
-                  </FloatingLabel>
-                  <Button
-                    variant="primary"
-                    className="rounded-pill"
-                    onClick={handleClose}
-                  >
-                    Submit
-                  </Button>
-                </Form>
+                    <label className="mb-2">Review us</label>
+                    <input
+                      className="rounded"
+                      {...register("review_us", { required: true })}
+                      placeholder="review_us"
+                    />
+                    {errors.review_us && (
+                      <p className="text-danger">Please fill up review</p>
+                    )}
+                    <label className="mb-2">Rate us</label>
+                    <ReactStars
+                      count={5}
+                      required
+                      className="mt-3 mb-2"
+                      onChange={ratingChanged}
+                      size={24}
+                      isHalf={true}
+                      emptyIcon={<i className="far fa-star"></i>}
+                      halfIcon={<i className="fa fa-star-half-alt"></i>}
+                      fullIcon={<i className="fa fa-star"></i>}
+                      activeColor="#ffd700"
+                    />
+                    <input
+                      className="rounded-pill"
+                      type="submit"
+                      onClick={handleClose}
+                    />
+                  </form>
+                </div>
               </Modal.Body>
               <Modal.Footer>
                 <Button
@@ -127,44 +180,47 @@ const ProductDetail = ({ s }) => {
             {description}
           </Tab>
           <Tab eventKey="profile" title="Reviews">
-          <div className="d-flex justify-content-around">
-          <Card style={{ width: '18rem' }}>
-    <Card.Body>
-      <Placeholder as={Card.Title} animation="glow">
-        <Placeholder xs={6} />
-      </Placeholder>
-      <Placeholder as={Card.Text} animation="glow">
-        <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-        <Placeholder xs={6} /> <Placeholder xs={8} />
-      </Placeholder>
-      <Placeholder.Button variant="primary" xs={6} />
-    </Card.Body>
-  </Card>
-  <Card style={{ width: '18rem' }}>
-    <Card.Body>
-      <Placeholder as={Card.Title} animation="glow">
-        <Placeholder xs={6} />
-      </Placeholder>
-      <Placeholder as={Card.Text} animation="glow">
-        <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-        <Placeholder xs={6} /> <Placeholder xs={8} />
-      </Placeholder>
-      <Placeholder.Button variant="primary" xs={6} />
-    </Card.Body>
-  </Card>
-  <Card style={{ width: '18rem' }}>
-    <Card.Body>
-      <Placeholder as={Card.Title} animation="glow">
-        <Placeholder xs={6} />
-      </Placeholder>
-      <Placeholder as={Card.Text} animation="glow">
-        <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-        <Placeholder xs={6} /> <Placeholder xs={8} />
-      </Placeholder>
-      <Placeholder.Button variant="primary" xs={6} />
-    </Card.Body>
-  </Card>
-  </div>
+            <div className="d-flex justify-content-around">
+              <Card style={{ width: "18rem" }}>
+                <Card.Body>
+                  <Placeholder as={Card.Title} animation="glow">
+                    <Placeholder xs={6} />
+                  </Placeholder>
+                  <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+                    <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+                    <Placeholder xs={8} />
+                  </Placeholder>
+                  <Placeholder.Button variant="primary" xs={6} />
+                </Card.Body>
+              </Card>
+              <Card style={{ width: "18rem" }}>
+                <Card.Body>
+                  <Placeholder as={Card.Title} animation="glow">
+                    <Placeholder xs={6} />
+                  </Placeholder>
+                  <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+                    <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+                    <Placeholder xs={8} />
+                  </Placeholder>
+                  <Placeholder.Button variant="primary" xs={6} />
+                </Card.Body>
+              </Card>
+              <Card style={{ width: "18rem" }}>
+                <Card.Body>
+                  <Placeholder as={Card.Title} animation="glow">
+                    <Placeholder xs={6} />
+                  </Placeholder>
+                  <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+                    <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+                    <Placeholder xs={8} />
+                  </Placeholder>
+                  <Placeholder.Button variant="primary" xs={6} />
+                </Card.Body>
+              </Card>
+            </div>
           </Tab>
         </Tabs>
       </div>

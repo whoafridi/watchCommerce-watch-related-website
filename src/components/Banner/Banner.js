@@ -37,10 +37,11 @@ const Banner = () => {
             </button>
           </Link>
         </div>
-        <div className="col-lg-6 col-md-6 col-sm-12">
+        <div className="col-lg-6 col-md-6 col-sm-12 hidden">
           <img
             className="img-fluid"
-            src="https://www.benbridge.com/on/demandware.static/-/Sites-bbj-master-catalog/default/dw8ad8b37f/images/11628963_07.jpg"
+            loading="lazy"
+            src="https://gadget.co.za/wp-content/uploads/2021/12/huawei-watch-3-pro-kv.png"
             alt="hero-icon"
           />
         </div>

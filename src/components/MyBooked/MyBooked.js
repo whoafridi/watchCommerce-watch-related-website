@@ -7,6 +7,7 @@ import swal from "sweetalert";
 const MyBooked = () => {
   const { user } = useAuth();
   const [book, setBook] = useState([]);
+  const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
     fetch(`https://watchcom-server.herokuapp.com/orders?email=${user.email}`)
@@ -35,6 +36,7 @@ const MyBooked = () => {
                 icon: "success",
                 timer: 1300,
               });
+              setDeleted(true);
               const remainingBooks = book.filter((b) => b._id !== id);
               setBook(remainingBooks);
             }

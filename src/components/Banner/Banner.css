@@ -18,3 +18,9 @@
 .header-p{
     color: #264653;
 }
+
+@media only screen and (max-width: 688px) {
+    .hidden{
+        display: none;
+    }
+}

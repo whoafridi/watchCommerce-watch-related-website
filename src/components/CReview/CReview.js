@@ -10,16 +10,16 @@ const CReview = ({ r }) => {
         key={r._id}
       >
         <Card.Body>
-        <h1 className="h1 w-100 text-center"><i class='bx bxs-user-circle'></i></h1>
+        <h1 className="h1 w-100 text-center"><i className='bx bxs-user-circle'></i></h1>
           <Card.Text>
           <h3 className="text-center">{r.displayName}</h3>
             <p className="text-center">{r.review}</p>
             <p className="text-center">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
               {r.rating}
             </p>
           </Card.Text>

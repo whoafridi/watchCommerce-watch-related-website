@@ -4,11 +4,12 @@ const Banner = () => {
   return (
     <div className="container mt-3" id="home">
       <div className="row d-flex align-items-center justify-content-center">
-      <div className="col-lg-6 col-md-6 col-sm-12">
+        <div className="col-lg-6 col-md-6 col-sm-12">
           <img
             className="img-fluid"
-            src="https://www.fitbit.com/global/content/dam/fitbit/global/pdp/devices/sense/hero-static/sage-grey/sense-sage-gray-device-3qt.png"
-            alt="hero-icon"
+            loading="lazy"
+            src="https://technoor.me/wp-content/uploads/2020/11/oppowatch.png"
+            alt="product-icon"
           />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
@@ -31,7 +32,8 @@ const Banner = () => {
             Of our Good Products.
           </h2>
           <p className="header-p">
-            You'll find good products from our e-cmmerce. So, don't forget to check out our store. Thank you.
+            You'll find good products from our e-cmmerce. So, don't forget to
+            check out our store. Thank you.
           </p>
           <button
             type="button"

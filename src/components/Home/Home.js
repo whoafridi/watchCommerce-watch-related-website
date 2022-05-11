@@ -7,9 +7,13 @@ import CustomerReview from "../CustomerReview/CustomerReview";
 import Details from "../Details/Details";
 import Faq from "../Faq/Faq";
 import Interest from "../Interest/Interest";
+import "react-loading-skeleton/dist/skeleton.css";
+import Loading from "../Loading/Loading";
 
 const Home = () => {
   const [products] = useProducts([]);
+
+  let productSlice = products.slice(0, 6);
 
   return (
     <div>
@@ -17,14 +21,16 @@ const Home = () => {
       <div className="container mt-4">
         <h1 className="text-center mb-3">Featured products</h1>
         {products.length === 0 ? (
-          <div class="d-flex justify-content-center">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
+          <Row xs={1} md={3} className="g-4">
+            {Array.from({ length: 6 }).map((_, idx) => (
+              <>
+                <Loading />
+              </>
+            ))}
+          </Row>
         ) : (
           <Row xs={1} md={3} className="g-4">
-            {products.slice(0, 6).map((service) => (
+            {productSlice.slice(0, 6).map((service) => (
               <Details key={service._id} service={service}></Details>
             ))}
           </Row>
