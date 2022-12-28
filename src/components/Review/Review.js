@@ -7,7 +7,7 @@ const Review = () => {
   const { user } = useAuth();
   const onSubmit = (data) => {
     axios
-      .post("https://watchcom-server.herokuapp.com/review", data)
+      .post("https://watch-commerce.vercel.app/review", data)
       .then((res) => {
         if (res.data.insertedId) {
           alert("added successfully");

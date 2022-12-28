@@ -15,7 +15,7 @@ const DashBoardHome = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch(`https://watchcom-server.herokuapp.com/orders?email=${user.email}`)
+    fetch(`https://watch-commerce.vercel.app/orders?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);

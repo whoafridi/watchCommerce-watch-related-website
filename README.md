@@ -18,4 +18,4 @@
 * express for api
 * mongodb for database
 
-## API [link](https://watchcom-server.herokuapp.com/)
+## API [link](https://watch-commerce.vercel.app/)

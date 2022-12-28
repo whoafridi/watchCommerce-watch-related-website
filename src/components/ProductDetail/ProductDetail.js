@@ -40,7 +40,7 @@ const ProductDetail = ({ s }) => {
     data.time = dateTime;
     console.log(data);
 
-    // fetch("https://watchcom-server.herokuapp.com/review", {
+    // fetch("https://watch-commerce.vercel.app/review", {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application/json",

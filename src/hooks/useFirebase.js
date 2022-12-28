@@ -108,7 +108,7 @@ const useFirebase = () => {
 
   // add admin
   useEffect(() => {
-    fetch(`https://watchcom-server.herokuapp.com/users/${user.email}`)
+    fetch(`https://watch-commerce.vercel.app/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -120,7 +120,7 @@ const useFirebase = () => {
   // save user into datbase
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://watchcom-server.herokuapp.com/users", {
+    fetch("https://watch-commerce.vercel.app/users", {
       method: method,
       headers: {
         "content-type": "application/json",

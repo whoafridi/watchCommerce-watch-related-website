@@ -18,7 +18,7 @@ const PlaceOrder = () => {
   const [single, setSingle] = useState([]);
 
   useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/products")
+    fetch("https://watch-commerce.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, [id]);
@@ -45,7 +45,7 @@ const PlaceOrder = () => {
     }).then((willDelete) => {
       if (willDelete) { 
         axios
-          .post("https://watchcom-server.herokuapp.com/order", data)
+          .post("https://watch-commerce.vercel.app/order", data)
           .then((res) => {
             if (res.data.insertedId) {
               console.log(data);

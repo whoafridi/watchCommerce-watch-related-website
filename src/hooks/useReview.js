@@ -4,7 +4,7 @@ export const useReview = () => {
     const [review, setReviews] = useState([]);
 
     useEffect(() => {
-      fetch("https://watchcom-server.herokuapp.com/review")
+      fetch("https://watch-commerce.vercel.app/review")
         .then((res) => res.json())
         .then((data) => setReviews(data));
     }, []);

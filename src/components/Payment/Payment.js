@@ -16,7 +16,7 @@ const Payment = () => {
   const [single, setSingle] = useState([]);
 
   useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/order")
+    fetch("https://watch-commerce.vercel.app/order")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, [paymentId]);

@@ -10,7 +10,7 @@ const MyBooked = () => {
   const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
-    fetch(`https://watchcom-server.herokuapp.com/orders?email=${user.email}`)
+    fetch(`https://watch-commerce.vercel.app/orders?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setBook(data));
   }, []);
@@ -25,7 +25,7 @@ const MyBooked = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        const url = `https://watchcom-server.herokuapp.com/order/${id}`;
+        const url = `https://watch-commerce.vercel.app/order/${id}`;
         fetch(url, {
           method: "DELETE",
         })

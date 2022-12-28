@@ -7,7 +7,7 @@ const AddProduct = () => {
 
   const onSubmit = (data) => {
     axios
-      .post("https://watchcom-server.herokuapp.com/products", data)
+      .post("https://watch-commerce.vercel.app/products", data)
       .then((res) => {
         if (res.data.insertedId) {
           alert("Added successfully");

@@ -13,7 +13,7 @@ const CheckoutForm = ({ s }) => {
   const [processing, setProcessing] = useState("");
 
   useEffect(() => {
-    fetch("https://watchcom-server.herokuapp.com/create-payment-intent", {
+    fetch("https://watch-commerce.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -71,7 +71,7 @@ const CheckoutForm = ({ s }) => {
         last4: paymentMethod.card.last4,
         transaction: paymentIntent.client_secret,
       };
-      const url = `https://watchcom-server.herokuapp.com/order/${_id}`;
+      const url = `https://watch-commerce.vercel.app/order/${_id}`;
       fetch(url, {
         method: "PUT",
         headers: {

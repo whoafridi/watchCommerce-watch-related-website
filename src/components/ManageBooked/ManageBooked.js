@@ -17,7 +17,7 @@ const ManageBooked = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        const url = `https://watchcom-server.herokuapp.com/order/${id}`;
+        const url = `https://watch-commerce.vercel.app/order/${id}`;
         fetch(url, {
           method: "DELETE",
         })

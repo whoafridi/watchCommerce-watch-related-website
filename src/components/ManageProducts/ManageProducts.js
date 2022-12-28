@@ -15,7 +15,7 @@ const ManageProducts = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        const url = `https://watchcom-server.herokuapp.com/products/${id}`;
+        const url = `https://watch-commerce.vercel.app/products/${id}`;
         fetch(url, {
           method: "DELETE",
         })
